@@ -1,0 +1,28 @@
+Notes:
+
+1. Create a store using the function configureStore from the library @reduxjs/toolkit
+   npm i @reduxjs/toolkit
+2. Create a reducer function
+   a. Two input params has to be given 1. state, 2. action. Action contains payload and type
+   b. Based on the action.type return the state variable
+   c. In articleReducer there is no action.type hence returned state variable by default
+3. Give the reducer function as parameter to the store, hence data is stored in store
+4. Get the data from store to UI
+   a. React-redux is the library that connects from redux to React concept(UI)
+   npm i react-redux
+   b. import Provider library from react-redux and provide it to the components (Usually it is put in the home component)
+5. Import connect function in UI
+6. Write mapStateToProps function which will store the parsed state state into props once mapStateToProps is given to connect function
+7. connect is a higher order component which will take Article component and mapStateToProps as input and it will re render article component by passing props which is parsed in mapStateToProps function
+8. Once we got the data as Props we can render the data in UI
+9. To send or update the data from UI to store write mapDispatchToProps function
+10. mapDispatchToProps function gives us the function in the props, and we will call that function whenever we need to update the data.
+11. Inside that dispact function is called along the the action sent in the dispatch function
+    const mapDispatchToProps = (dispatch) => ({
+    onSearchFn: (searchTerm) =>
+    dispatch({ type: "SEARCH_SET", payload: searchTerm }),
+    });
+12. Both type and payload is sent as action inside dispatch function
+13. Dispatch function will call reducer, which will update the state variable based on the action and payload.
+    return { ...state, searchTerm: action.payload };
+14. Finally the updated state variable will be stored in store.
